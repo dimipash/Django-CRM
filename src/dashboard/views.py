@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.shortcuts import redirect, render
-from django.http import HttpResponse
 
 TEMPLATES_DIR = settings.TEMPLATES_DIR
 print("TEMPLATES_DIR", TEMPLATES_DIR)
