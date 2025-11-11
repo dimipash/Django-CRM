@@ -2,6 +2,13 @@
 
 {% block content %}
 
-{{ object_list }}
+{% for contact in object_list %}
+    <div class="contact">
+        <h3>{{ contact.name }}</h3>
+        <p>{{ contact.email }}</p>
+    </div>
+{% endfor %}
 
+{% empty %}
+    <p>No contacts found.</p>
 {% endblock %}
