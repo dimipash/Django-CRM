@@ -1,5 +1,6 @@
 src/local-cdn
 src/mystaticfiles/vendors
+.genkit/
 
 # Python-generated files
 __pycache__/
