@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     "django_googler",
     # internal apps
     'contacts',
+    'events',
 ]
 
 MIDDLEWARE = [

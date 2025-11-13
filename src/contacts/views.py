@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 
+from events.models import Event
 from .models import Contact
 
 @login_required
@@ -13,6 +14,12 @@ def contacts_detail_view(request, contact_id=None):
     context = {
         "contact": instance,
     }
+    Event.objects.create(
+        type=Event.EventType.VIEWED,
+        object_id=instance.id,
+        model_name="contacts.content",
+
+    )
     return render(request, 'contacts/detail.html', context)
 
 @login_required
