@@ -15,6 +15,7 @@ def contacts_detail_view(request, contact_id=None):
         "contact": instance,
     }
     Event.objects.create(
+        user=user,
         type=Event.EventType.VIEWED,
         object_id=instance.id,
         model_name="contacts.content",

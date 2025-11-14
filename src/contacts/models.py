@@ -4,9 +4,10 @@ from django.db import models
 User = settings.AUTH_USER_MODEL
 
 class Contact(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='mycontacts')
     email = models.EmailField()
     notes = models.TextField(blank=True, default='')
+    last_edited_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='my_contact_edits')
 
     def get_absolute_url(self):
         return f"/contacts/{self.id}/"
