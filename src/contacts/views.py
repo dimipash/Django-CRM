@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import Http404
 
 from events.models import Event
+from events.signals import event_did_trigger, trigger_event
 from .models import Contact
 
 @login_required
@@ -14,11 +15,12 @@ def contacts_detail_view(request, contact_id=None):
     context = {
         "contact": instance,
     }
-    Event.objects.create(
-        user=user,
-        type=Event.EventType.VIEWED,
-        content_object=instance
 
+    trigger_event(
+        instance,
+        is_viewed=True,
+        user=user,
+        request=request
     )
     return render(request, 'contacts/detail.html', context)
 
