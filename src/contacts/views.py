@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 
-from events.models import Event
-from events.signals import event_did_trigger, trigger_event
+from events.signals import trigger_event
+from events import services as event_services
 from .models import Contact
 
 @login_required
@@ -22,6 +22,9 @@ def contacts_detail_view(request, contact_id=None):
         user=user,
         request=request
     )
+    analytics = event_services.get_event_analytics(instance)
+    context["analytics"] = analytics
+
     return render(request, 'contacts/detail.html', context)
 
 @login_required
