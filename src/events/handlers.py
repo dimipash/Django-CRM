@@ -1,6 +1,6 @@
 from django.dispatch import receiver
 from django.db.models.signals import post_save
-
+from django.utils import timezone
 from .signals import event_did_trigger
 from .models import Event
 
@@ -15,9 +15,9 @@ def handle_post_save_signal(
 
     # print(sender, event_type, content_object,user)
 
-    event_obj = Event.objects.create(
+    Event.objects.create(
         type=event_type,
         content_object=content_object,
-        user=user
+        user=user,
+        time=timezone.now()
     )
-    print(event_obj)
