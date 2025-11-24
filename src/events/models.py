@@ -13,6 +13,7 @@ class Event(TimescaleModel):
         CREATED = "created", "Create Event"
         VIEWED = "viewed", "View Event"
         SAVED = "saved", "Save or Update Event"
+
     user = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, help_text="The user who performed the event", related_name='myevents')
     type = models.CharField(max_length=50, default=EventType.VIEWED, choices=EventType.choices)
     object_id = models.PositiveBigIntegerField()
