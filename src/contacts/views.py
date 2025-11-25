@@ -22,7 +22,7 @@ def contacts_detail_view(request, contact_id=None):
         user=user,
         request=request
     )
-    analytics = event_services.get_event_analytics(instance, gapfill=True, ignore_types=["created"])
+    analytics = event_services.get_event_analytics(instance, gapfill=True, ignore_types=["unknown", "created"])
     context["analytics"] = analytics
 
     return render(request, 'contacts/detail.html', context)
