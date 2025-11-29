@@ -40,7 +40,9 @@ def get_my_other_contacts(user, page_token=None):
     creds = get_user_creds(user)
     service = build_service(creds, service_name="people", version="v1")
     results = (
-        service.people().otherContacts().list(
+        service
+        .otherContacts()
+        .list(
             pageSize=10,
             readMask="names,emailAddresses",
             requestSyncToken=True,
