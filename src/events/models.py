@@ -11,6 +11,7 @@ class Event(TimescaleModel):
     class EventType(models.TextChoices):
         UNKNOWN = "unknown", "Unknown Event"
         CREATED = "created", "Create Event"
+        SYNC = "sync", "Sync Event"
         VIEWED = "viewed", "View Event"
         SAVED = "saved", "Save or Update Event"
 

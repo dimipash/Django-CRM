@@ -12,6 +12,9 @@ class Contact(models.Model):
     last_name = models.CharField(max_length=255, default="", blank=True)
     notes = models.TextField(blank=True, default='')
     last_edited_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='my_contact_edits')
+    last_sync = models.DateTimeField(
+            auto_now_add=False, auto_now=False, blank=True, null=True
+        )
     events = GenericRelation(Event)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
