@@ -2,7 +2,8 @@ name: Sync Google Contacts
 
 on:
   workflow_dispatch:
-
+  # schedule:
+  #   - cron: '0 1,12 * * *'  # crontab.guru
 jobs:
   build:
 
