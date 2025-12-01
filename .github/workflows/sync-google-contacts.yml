@@ -9,5 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout django-crm
-    - uses: actions/checkout@v4
+      uses: actions/checkout@v4
+    - name: Install the latest version of uv
+      uses: astral-sh/setup-uv@v7
+    - name: Sync deps for Python
+      run: uv sync --frozen
     
